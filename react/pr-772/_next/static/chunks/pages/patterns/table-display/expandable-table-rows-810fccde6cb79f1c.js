@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[9154],{99889:function(n,_,e){(window.__NEXT_P=window.__NEXT_P||[]).push(["/patterns/table-display/expandable-table-rows",function(){return e(44508)}])}},function(n){n.O(0,[5412,4508,9774,2888,179],function(){return n(n.s=99889)}),_N_E=n.O()}]);
