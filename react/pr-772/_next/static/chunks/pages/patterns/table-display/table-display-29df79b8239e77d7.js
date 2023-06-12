@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5622],{5763:function(n,_,t){(window.__NEXT_P=window.__NEXT_P||[]).push(["/patterns/table-display/table-display",function(){return t(6638)}])}},function(n){n.O(0,[5412,1374,6638,9774,2888,179],function(){return n(n.s=5763)}),_N_E=n.O()}]);
