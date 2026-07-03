@@ -48,4 +48,4 @@ const __mfImport = (src) =>
   };
   const __mfRemotePreloads = [__mfPreloadRemote("inventory/main"),__mfPreloadRemote("widget_os/main"),__mfPreloadRemote("widget_updates/main")];
   await Promise.allSettled(__mfRemotePreloads);
-})().then(() => __mfImport("./index-D2LYu5a0.js"));
+})().then(() => __mfImport("./index-DC03fjS1.js"));

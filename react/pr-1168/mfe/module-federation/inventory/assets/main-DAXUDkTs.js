@@ -5846,7 +5846,9 @@ var shouldForwardProp = function() {
     // The `as` prop is supported by Emotion
     "as": true,
     // Internal prop for color mode injection, should not be forwarded to DOM
-    "__colorMode": true
+    "__colorMode": true,
+    // Internal prop for base styles at the lowest priority, should not be forwarded to DOM
+    "__sx": true
   });
   return function(prop) {
     return isPropValid(prop) && !omittedStylePropMap[prop];
@@ -5860,16 +5862,23 @@ var transformCSSPseudoSelectors = function transformCSSPseudoSelectors2(props) {
   });
   return sx$1(Object.fromEntries(entries));
 };
-var transformCSSSuperset = function transformCSSSuperset2(props) {
+var transformBaseSxProp = function transformBaseSxProp2(props) {
+  return sx$1(props === null || props === void 0 ? void 0 : props.__sx);
+};
+var transformSxProp = function transformSxProp2(props) {
   return sx$1(props === null || props === void 0 ? void 0 : props.sx);
 };
 var Box$1 = /* @__PURE__ */ createStyled("div", {
   shouldForwardProp,
   target: "eecupy40"
 } )(
+  transformBaseSxProp,
+  // `__sx` — base styles, LOWEST priority
   system$1,
+  // style props
   transformCSSPseudoSelectors,
-  transformCSSSuperset,
+  // pseudo props (unchanged)
+  transformSxProp,
   "" 
 );
 Box$1.displayName = "Box";
