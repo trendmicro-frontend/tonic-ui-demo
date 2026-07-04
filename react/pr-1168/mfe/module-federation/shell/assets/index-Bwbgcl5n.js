@@ -3377,7 +3377,7 @@ function resolveTokenReferences(value, allTokens) {
     // Handle strings with multiple token references (like color-mix syntax)
     if (typeof value === 'string' && value.includes('{')) {
       var result = value;
-      var tokenPattern = /\{[^}]+\}/g;
+      var tokenPattern = /\{[^{}]+\}/g;
       var matches = value.match(tokenPattern);
       if (matches) {
         var _iterator = _createForOfIteratorHelper$1(matches),

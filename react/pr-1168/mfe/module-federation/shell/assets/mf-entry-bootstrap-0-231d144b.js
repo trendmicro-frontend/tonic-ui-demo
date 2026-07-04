@@ -25,8 +25,27 @@ const __mfImport = (src) =>
 
 
 (async () => {
-  const __mfHostInit = await __mfImport("./hostInit-DvT3F0nu.js");
+  const __mfHostInit = await __mfImport("./hostInit-B9VLDOsC.js");
   await __mfHostInit.__tla;
   const { initHost } = __mfHostInit;
-  await initHost();
-})().then(() => __mfImport("./index-CASyLEcQ.js"));
+  
+  const runtime = await initHost();
+  const __mfPreloadRemote = (remote) => {
+    const pendingKey = "__mf_pending__" + remote;
+    if (!__mfModuleCache.remote[pendingKey]) {
+      __mfModuleCache.remote[pendingKey] = runtime.loadRemote(remote)
+        .then((mod) => {
+          __mfModuleCache.remote[remote] = mod;
+          delete __mfModuleCache.remote[pendingKey];
+          return mod;
+        })
+        .catch((error) => {
+          delete __mfModuleCache.remote[pendingKey];
+          throw error;
+        });
+    }
+    return __mfModuleCache.remote[pendingKey];
+  };
+  const __mfRemotePreloads = [__mfPreloadRemote("inventory/main"),__mfPreloadRemote("widget_os/main"),__mfPreloadRemote("widget_updates/main")];
+  await Promise.allSettled(__mfRemotePreloads);
+})().then(() => __mfImport("./index-Bwbgcl5n.js"));

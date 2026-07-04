@@ -1,4 +1,4 @@
-import { _ as __vitePreload } from './preload-helper-Dqveael-.js';
+import { _ as __vitePreload } from './preload-helper-BZ1AIgn8.js';
 
 const cssAssetMap = {};
     const injectedCssHrefs = new Set();
@@ -51,12 +51,12 @@ const cssAssetMap = {};
       );
     }
 
-    const virtual_mfExposes___mfe_internal__widget_updates__remoteEntry_js = {
+    const virtual_mfExposes___mfe_internal__widget_os__remoteEntry_js = {
     
         "./main": async () => {
           await injectCssAssets("./main");
           const importModule = await importExposedModule(
-            () => __vitePreload(() => import('./main-CexoN4w7.js'),true?[]:void 0)
+            () => __vitePreload(() => import('./main-obFlct-a.js'),true?[]:void 0)
           );
           const exportModule = {};
           Object.assign(exportModule, importModule);
@@ -69,4 +69,4 @@ const cssAssetMap = {};
       
   };
 
-export { virtual_mfExposes___mfe_internal__widget_updates__remoteEntry_js as default };
+export { virtual_mfExposes___mfe_internal__widget_os__remoteEntry_js as default };
