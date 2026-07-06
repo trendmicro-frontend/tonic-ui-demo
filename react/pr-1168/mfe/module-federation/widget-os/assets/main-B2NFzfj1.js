@@ -4857,6 +4857,25 @@ var createResponsiveResolver = function createResponsiveResolver(theme) {
     return next;
   };
 };
+
+// Merges two already-resolved sx() results for the array-composition branch below. Deep,
+// not shallow: when both sides have a plain object at the same key (a nested selector, a
+// media query, ...), recurses into it instead of letting `resolved`'s value replace `acc`'s
+// wholesale -- this is what makes two array items that both touch the same nested selector
+// compose per-declaration rather than the later one discarding the earlier one's rules. A
+// non-object value (or a type mismatch) is a plain last-write-wins overwrite, same as before.
+var mergeResolvedSx = function mergeResolvedSx(acc, resolved) {
+  var next = _objectSpread2$1({}, acc);
+  for (var key in resolved) {
+    if (!Object.prototype.hasOwnProperty.call(resolved, key)) {
+      continue;
+    }
+    var accValue = next[key];
+    var resolvedValue = resolved[key];
+    next[key] = isPlainObject$1(accValue) && isPlainObject$1(resolvedValue) ? mergeResolvedSx(accValue, resolvedValue) : resolvedValue;
+  }
+  return next;
+};
 var sx = function sx(valueOrFn) {
   return function () {
     var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -4865,7 +4884,14 @@ var sx = function sx(valueOrFn) {
     }
 
     /**
-     * If an array is provided, each item is resolved independently and merged left to right.
+     * If an array is provided, each item is resolved independently and merged left to right,
+     * per declaration -- a later item overrides an earlier one's individual properties without
+     * discarding the rest. For a flat property this is a plain last-write-wins overwrite. For a
+     * nested rule (a pseudo-selector, media query, or any other plain-object value), the merge
+     * recurses instead of replacing the whole nested object, so two array items that both touch
+     * the SAME nested selector (e.g. two peer contributors both declaring `&:hover`) compose
+     * their declarations together rather than the later one silently discarding everything the
+     * earlier one declared under that selector.
      *
      * ```js
      * sx([
@@ -4877,7 +4903,7 @@ var sx = function sx(valueOrFn) {
      */
     if (Array.isArray(valueOrFn)) {
       return valueOrFn.reduce(function (acc, item) {
-        return _objectSpread2$1(_objectSpread2$1({}, acc), sx(item)(props));
+        return mergeResolvedSx(acc, sx(item)(props));
       }, {});
     }
     var theme = _objectSpread2$1({}, props.theme || props);
