@@ -15,7 +15,7 @@
     ]
   },
   "../../../../virtual:mf-exposes:__mfe_internal__inventory__remoteEntry_js": {
-    "file": "assets/virtualExposes-CLkYjr1Q.js",
+    "file": "assets/virtualExposes-Gko269_g.js",
     "name": "virtualExposes",
     "src": "../../../../virtual:mf-exposes:__mfe_internal__inventory__remoteEntry_js",
     "isDynamicEntry": true,
@@ -86,7 +86,7 @@
     "name": "preload-helper"
   },
   "index.html": {
-    "file": "assets/index-BmA86_8K.js",
+    "file": "assets/index-D-ZQrtum.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -97,7 +97,7 @@
     ]
   },
   "main.jsx": {
-    "file": "assets/main-9VtRJdQx.js",
+    "file": "assets/main-Cp9nMTcD.js",
     "name": "main",
     "src": "main.jsx",
     "isEntry": true,
